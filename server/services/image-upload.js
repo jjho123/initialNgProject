@@ -4,9 +4,9 @@ const multerS3 = require('multer-s3');
 const config = require('../config');
 
 aws.config.update({
-  secretAccessKey: config.AWS_SECRET_ACCESS_KEY,
-  accessKeyId: config.AWS_ACCESS_KEY_ID,
-  region: 'us-east-1'
+  secretAccessKey: config.AWS_SECRET_ACCESS_KEY,  
+  accessKeyId: config.AWS_SECRET_ACCESS_KEY_ID, 
+  region: 'ap-southeast-1'
 });
 
 const s3 = new aws.S3();
@@ -24,7 +24,7 @@ const upload = multer({
   storage: multerS3({
     acl: 'public-read',
     s3,
-    bucket: 'bwm-ng-dev',
+    bucket: 'test-ng-app-3',
     metadata: function (req, file, cb) {
       cb(null, {fieldName: 'TESTING_METADATA'});
     },
